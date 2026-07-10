@@ -222,69 +222,49 @@
             </svg>
         </div>
     </section>
+     section id="nosotros" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+            <!-- Columna de Texto -->
+            <div class="mb-10 lg:mb-0 fade-in-up">
+                <div class="inline-block p-1 bg-krama/10 rounded-xl mb-4">
+                    <span class="bg-white text-krama font-bold px-4 py-1 rounded-lg text-sm tracking-wider uppercase shadow-sm">Sobre Krama Chile</span>
+                </div>
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-6">
+                    Soluciones Integrales para la era de la conectividad
+                </h2>
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    En KRAMA CHILE, somos una empresa originaria de Chillán dedicada a proveer servicios técnicos de excelencia. Nos especializamos en la construcción, mantenimiento y optimización de infraestructura de telecomunicaciones y energía.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                    Nuestro compromiso es entregar soluciones rápidas, eficientes y seguras. Contamos con personal altamente calificado para enfrentar desafíos técnicos, desde trabajos correctivos en fibra óptica (FFOO) hasta la implementación de sitios de radiofrecuencia (RF).
+                </p>
+            </div>
 
-    <section id="nosotros" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <div class="mb-10 lg:mb-0 fade-in-up">
-                    <div class="inline-block p-1 bg-krama/10 rounded-xl mb-4">
-                        <span class="bg-white text-krama font-bold px-4 py-1 rounded-lg text-sm tracking-wider uppercase shadow-sm">Sobre Krama Chile</span>
-                    </div>
-                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-6">
-                        Soluciones Integrales para la era de la conectividad
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        En KRAMA CHILE, somos una empresa originaria de Chillán dedicada a proveer servicios técnicos de excelencia. Nos especializamos en la construcción, mantenimiento y optimización de infraestructura de telecomunicaciones y energía.
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                        Nuestro compromiso es entregar soluciones rápidas, eficientes y seguras. Contamos con personal altamente calificado para enfrentar desafíos técnicos, desde trabajos correctivos en fibra óptica (FFOO) hasta la implementación de sitios de radiofrecuencia (RF).
-                    </p>
-                    
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-krama/20 text-krama">
-                                <i class="fa-solid fa-check text-sm"></i>
-                            </div>
-                            <p class="ml-3 text-base text-gray-700 font-medium">Profesionalismo y seguridad en cada obra.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-krama/20 text-krama">
-                                <i class="fa-solid fa-check text-sm"></i>
-                            </div>
-                            <p class="ml-3 text-base text-gray-700 font-medium">Respuesta rápida a emergencias y trabajos correctivos.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-krama/20 text-krama">
-                                <i class="fa-solid fa-check text-sm"></i>
-                            </div>
-                            <p class="ml-3 text-base text-gray-700 font-medium">Cobertura técnica en Chillán y alrededores.</p>
-                        </li>
-                    </ul>
+            <!-- Columna de Imagen (Fija para que no rompa el diseño) -->
+            <div class="relative flex justify-center mt-12 lg:mt-0">
+                <!-- Contenedor con fondo gris para que no se vea vacío si falla la imagen -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl max-w-sm w-full bg-gray-200 min-h-[300px] flex items-center justify-center">
+                    <img src="tecnico.jpg" 
+                         alt="Técnico Krama" 
+                         onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#e5e7eb';"
+                         class="w-full h-auto object-cover">
                 </div>
                 
-                <div class="relative fade-in-up" style="transition-delay: 200ms;">
-                    <!-- Imagen decorativa / Collage -->
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
-                        <div class="absolute inset-0 bg-krama mix-blend-multiply opacity-20 group-hover:opacity-10 transition-opacity"></div>
-                        <img src="https://images.unsplash.com/photo-1580983196931-e3796be73167?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Técnico trabajando en telecomunicaciones" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                <!-- Elemento flotante -->
+                <div class="absolute -bottom-6 lg:-right-12 bg-white p-4 rounded-xl shadow-2xl z-20 flex items-center gap-4 border-l-4 border-krama w-60 sm:w-64">
+                    <div class="bg-green-100 p-3 rounded-lg text-krama">
+                        <i class="fa-solid fa-shield-halved text-2xl"></i>
                     </div>
-                    
-                    <!-- Elemento flotante -->
-                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100 hidden md:block">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-green-100 p-3 rounded-full text-green-600">
-                                <i class="fa-solid fa-shield-halved text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900">Servicio Garantizado</h4>
-                                <p class="text-sm text-gray-500">Calidad en cada proyecto</p>
-                            </div>
-                        </div>
+                    <div>
+                        <p class="font-bold text-gray-900 text-sm">Servicio Garantizado</p>
+                        <p class="text-gray-500 text-xs">Calidad en cada proyecto</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="servicios" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
