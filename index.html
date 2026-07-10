@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRAMA CHILE SOLUCIONES INTEGRALES SPA | Telecomunicaciones en Chillán</title>
+    <meta name="description" content="Empresa de telecomunicaciones en Chillán. Trabajos en redes, mantenimiento de sitios celulares, enlaces MMOO, obras civiles menores y más.">
+    
+    <!-- Tailwind CSS (Cargado por CDN para facilidad de uso en un solo archivo) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Extraemos el color verde oscuro del logo de Krama
+                        krama: {
+                            light: '#2d6a1f',
+                            DEFAULT: '#1c4a11', // Color principal basado en el logo
+                            dark: '#112d0a',
+                        },
+                        // Un color de acento, un gris cálido para contrastar
+                        accent: {
+                            light: '#f3f4f6',
+                            DEFAULT: '#9ca3af',
+                            dark: '#4b5563',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* --- SCROLLBAR ESPECTACULAR --- */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f4; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d6a1f; 
+            border-radius: 10px;
+            border: 3px solid #f1f1f4;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #112d0a; 
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efecto parallax y fondo degradado animado */
+        .hero-spectacular {
+            background: linear-gradient(-45deg, rgba(17, 45, 10, 0.9), rgba(28, 74, 17, 0.8), rgba(10, 31, 5, 0.9), rgba(28, 74, 17, 0.9)), url('https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: 400% 400%, cover;
+            background-position: center, center;
+            background-attachment: fixed, fixed;
+            background-blend-mode: multiply;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%, center; }
+            50% { background-position: 100% 50%, center; }
+            100% { background-position: 0% 50%, center; }
+        }
+        
+        /* Estilo espectacular para las tarjetas de servicios */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.85); /* Efecto cristal */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Brillo sutil de fondo antes de hacer hover */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(45,106,31,0.05) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(28, 74, 17, 0.4), 0 0 20px rgba(45, 106, 31, 0.2); /* Sombra + Glow Verde */
+            border-color: rgba(45, 106, 31, 0.3);
+            z-index: 10;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .service-icon {
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            animation: floatIcon 2s ease-in-out infinite;
+            background-color: #1c4a11;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(28, 74, 17, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-md z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <!-- Reemplaza con la ruta de tu imagen local si la subes al servidor -->
+                        <img class="h-12 w-auto transition-transform group-hover:scale-105" src="image_7a011f.png" alt="KRAMA Chile Logo">
+                        <!-- Texto alternativo si el logo no carga rápido -->
+                        <div class="hidden sm:block">
+                            <span class="block font-bold text-krama text-xl leading-none tracking-wide">KRAMA</span>
+                            <span class="block text-xs text-gray-500 tracking-widest font-semibold">SOLUCIONES INTEGRALES</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Menú de Escritorio -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-krama font-semibold transition-colors duration-200">Inicio</a>
+                    <a href="#nosotros" class="text-gray-700 hover:text-krama font-semibold transition-colors duration-200">Nosotros</a>
+                    <a href="#servicios" class="text-gray-700 hover:text-krama font-semibold transition-colors duration-200">Servicios</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-krama font-semibold transition-colors duration-200">Contacto</a>
+                </nav>
+
+                <!-- Botón Llamar a la acción (Escritorio) -->
+                <div class="hidden md:flex items-center">
+                    <a href="tel:+5693509379" class="bg-krama hover:bg-krama-light text-white px-5 py-2.5 rounded-full font-semibold shadow-lg shadow-krama/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2">
+                        <i class="fa-solid fa-phone"></i> Llámanos
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-krama focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col">
+                <a href="#inicio" class="block px-3 py-3 text-base font-semibold text-gray-800 hover:text-krama hover:bg-gray-50 rounded-md transition-colors mobile-link">Inicio</a>
+                <a href="#nosotros" class="block px-3 py-3 text-base font-semibold text-gray-800 hover:text-krama hover:bg-gray-50 rounded-md transition-colors mobile-link">Nosotros</a>
+                <a href="#servicios" class="block px-3 py-3 text-base font-semibold text-gray-800 hover:text-krama hover:bg-gray-50 rounded-md transition-colors mobile-link">Servicios</a>
+                <a href="#contacto" class="block px-3 py-3 text-base font-semibold text-gray-800 hover:text-krama hover:bg-gray-50 rounded-md transition-colors mobile-link">Contacto</a>
+                <a href="tel:+5693509379" class="mt-4 w-full text-center bg-krama text-white px-4 py-3 rounded-md font-bold flex justify-center items-center gap-2 shadow-lg shadow-krama/30">
+                    <i class="fa-solid fa-phone"></i> 93509379
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative pt-20 pb-32 lg:pt-48 lg:pb-56 hero-spectacular flex items-center min-h-screen overflow-hidden">
+        
+        <!-- Elementos decorativos de fondo flotantes -->
+        <div class="absolute top-1/4 left-10 w-32 h-32 bg-green-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-10 w-48 h-48 bg-krama-light rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl drop-shadow-2xl fade-in-up">
+            </p>
+            <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center gap-4 fade-in-up" style="transition-delay: 200ms;">
+                <a href="#servicios" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-krama-dark bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10 shadow-xl transition-transform hover:scale-105">
+                    Nuestros Servicios
+                </a>
+                <a href="#contacto" class="mt-3 w-full flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-full text-white hover:bg-white/10 md:py-4 md:text-lg md:px-10 shadow-xl sm:mt-0 transition-transform hover:scale-105">
+                    Cotizar Proyecto
+                </a>
+            </div>
+        </div>
+        
+        <!-- Shape Divider inferior -->
+        <div class="absolute bottom-0 w-full overflow-hidden leading-none">
+            <svg class="relative block w-full h-12 md:h-24 text-gray-50" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,121.22,201.2,110.5,242.66,104.14,283.5,88.81,321.39,56.44Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-10 lg:mb-0 fade-in-up">
+                    <div class="inline-block p-1 bg-krama/10 rounded-xl mb-4">
+                        <span class="bg-white text-krama font-bold px-4 py-1 rounded-lg text-sm tracking-wider uppercase shadow-sm">Sobre Krama Chile</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-6">
+                        Soluciones Integrales para la era de la conectividad
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        En KRAMA CHILE, somos una empresa originaria de Chillán dedicada a proveer servicios técnicos de excelencia. Nos especializamos en la construcción, mantenimiento y optimización de infraestructura de telecomunicaciones y energía.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                        Nuestro compromiso es entregar soluciones rápidas, eficientes y seguras. Contamos con personal altamente calificado para enfrentar desafíos técnicos, desde trabajos correctivos en fibra óptica (FFOO) hasta la implementación de sitios de radiofrecuencia (RF).
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-krama/20 text-krama">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700 font-medium">Profesionalismo y seguridad en cada obra.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-krama/20 text-krama">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700 font-medium">Respuesta rápida a emergencias y trabajos correctivos.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 flex items-center justify-center h-6 w-6 rounded-full bg-krama/20 text-krama">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                            <p class="ml-3 text-base text-gray-700 font-medium">Cobertura técnica en Chillán y alrededores.</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="relative fade-in-up" style="transition-delay: 200ms;">
+                    <!-- Imagen decorativa / Collage -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                        <div class="absolute inset-0 bg-krama mix-blend-multiply opacity-20 group-hover:opacity-10 transition-opacity"></div>
+                        <img src="https://images.unsplash.com/photo-1580983196931-e3796be73167?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Técnico trabajando en telecomunicaciones" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    
+                    <!-- Elemento flotante -->
+                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100 hidden md:block">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-green-100 p-3 rounded-full text-green-600">
+                                <i class="fa-solid fa-shield-halved text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Servicio Garantizado</h4>
+                                <p class="text-sm text-gray-500">Calidad en cada proyecto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-krama font-bold tracking-wide uppercase text-sm mb-2">Nuestras Especialidades</h2>
+                <h3 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Catálogo de Servicios</h3>
+                <p class="mt-4 text-lg text-gray-600">Ofrecemos un portafolio completo de soluciones integrales para mantener su infraestructura operativa al 100%.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Servicio 1: Energía -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 service-card fade-in-up">
+                    <div class="service-icon inline-flex items-center justify-center p-3 bg-gray-200 text-gray-600 rounded-xl mb-6 transition-colors duration-300">
+                        <i class="fa-solid fa-bolt text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Sistemas de Energía</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Trabajos en red eléctrica de Baja Tensión (BT) y Corriente Continua (CC). Instalación y configuración de sistemas de bancos de baterías.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 border-t border-gray-200 pt-4">
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Redes BT y CC</li>
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Bancos de baterías</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 2: Generadores -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 service-card fade-in-up" style="transition-delay: 100ms;">
+                    <div class="service-icon inline-flex items-center justify-center p-3 bg-gray-200 text-gray-600 rounded-xl mb-6 transition-colors duration-300">
+                        <i class="fa-solid fa-plug-circle-bolt text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Respaldo Eléctrico (GG.EE)</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Respaldo con generadores móviles. Instalación, mantenimiento y recarga de Grupos Electrógenos (GG.EE) fijos con tanque certificado.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 border-t border-gray-200 pt-4">
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Generadores móviles</li>
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Mantenimiento y recarga</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 3: Telecomunicaciones -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 service-card fade-in-up" style="transition-delay: 200ms;">
+                    <div class="service-icon inline-flex items-center justify-center p-3 bg-gray-200 text-gray-600 rounded-xl mb-6 transition-colors duration-300">
+                        <i class="fa-solid fa-network-wired text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Redes y Enlaces</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Trabajos correctivos en Fibra Óptica (FFOO) y Microondas (MMOO). Implementación y optimización de enlaces MMOO TSS.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 border-t border-gray-200 pt-4">
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Correctivos FFOO y MMOO</li>
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Optimización de enlaces</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 4: Sitios Celulares -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 service-card fade-in-up" style="transition-delay: 300ms;">
+                    <div class="service-icon inline-flex items-center justify-center p-3 bg-gray-200 text-gray-600 rounded-xl mb-6 transition-colors duration-300">
+                        <i class="fa-solid fa-tower-cell text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Sitios Celulares</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Mantenimiento integral de sitios celulares. Implementación de sitios de Radiofrecuencia (RF) y gabinetes.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 border-t border-gray-200 pt-4">
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Mantenimiento de sitios</li>
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Implementación RF</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 5: Estructuras -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 service-card fade-in-up" style="transition-delay: 400ms;">
+                    <div class="service-icon inline-flex items-center justify-center p-3 bg-gray-200 text-gray-600 rounded-xl mb-6 transition-colors duration-300">
+                        <i class="fa-solid fa-screwdriver-wrench text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Aseguramiento Estructural</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Fabricación e instalación de sistemas de aseguramiento estructural para equipos de telecomunicaciones y gabinetes.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 border-t border-gray-200 pt-4">
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Fabricación a medida</li>
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Instalación segura</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 6: Obras Civiles -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 service-card fade-in-up" style="transition-delay: 500ms;">
+                    <div class="service-icon inline-flex items-center justify-center p-3 bg-gray-200 text-gray-600 rounded-xl mb-6 transition-colors duration-300">
+                        <i class="fa-solid fa-trowel-bricks text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Obras Civiles Menores</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Reparación y construcción de cercos y radieres. Limpieza, desmalezado y mantenimiento general de sitios (OOCC menores).
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 border-t border-gray-200 pt-4">
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Cercos y Radieres</li>
+                        <li><i class="fa-solid fa-angle-right text-krama mr-2"></i> Limpieza y Desmalezado</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-krama relative py-16 overflow-hidden">
+        <!-- Elemento de diseño de fondo -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white opacity-10"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-black opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="text-center md:text-left fade-in-up">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">¿Necesitas soporte técnico rápido y confiable?</h2>
+                    <p class="text-gray-200">Operamos en Chillán y alrededores con disponibilidad inmediata.</p>
+                </div>
+                <div class="flex-shrink-0 fade-in-up" style="transition-delay: 200ms;">
+                    <a href="tel:+5693509379" class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-krama bg-white hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 gap-3">
+                        <i class="fa-solid fa-phone-volume text-xl"></i>
+                        Llamar al +56 9 3509 379
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-24 bg-gray-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden fade-in-up">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <!-- Información de Contacto -->
+                    <div class="bg-krama-dark text-white p-10 lg:p-14 flex flex-col justify-between relative overflow-hidden">
+                        <!-- Patrón de fondo -->
+                        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+                        
+                        <div class="relative z-10">
+                            <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
+                            <p class="text-gray-300 mb-10 leading-relaxed">
+                                Estamos listos para atender sus requerimientos de telecomunicaciones y obras civiles. Escríbanos o llámenos directamente.
+                            </p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 bg-white/10 p-3 rounded-lg text-white">
+                                        <i class="fa-solid fa-location-dot text-xl w-6 text-center"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Ubicación</p>
+                                        <p class="text-gray-300">Chillán, Región de Ñuble<br>Chile</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 bg-white/10 p-3 rounded-lg text-white">
+                                        <i class="fa-solid fa-phone text-xl w-6 text-center"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Teléfono</p>
+                                        <a href="tel:+5693509379" class="text-gray-300 hover:text-white transition-colors block text-lg">+56 9 3509 379</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 bg-white/10 p-3 rounded-lg text-white">
+                                        <i class="fa-solid fa-envelope text-xl w-6 text-center"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Correo Electrónico</p>
+                                        <!-- Reemplazar con el correo real si lo hay -->
+                                        <a href="mailto:contacto@kramachile.cl" class="text-gray-300 hover:text-white transition-colors">contacto@kramachile.cl</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Logo simple en esquina -->
+                        <div class="relative z-10 mt-12 opacity-50 flex items-center gap-3">
+                            <i class="fa-solid fa-wifi text-3xl"></i>
+                            <span class="font-bold text-xl tracking-wider">KRAMA SPA</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario de Contacto -->
+                    <div class="p-10 lg:p-14">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Envíenos un mensaje</h3>
+                        <form id="contact-form" class="space-y-6" onsubmit="event.preventDefault(); showSuccessMessage();">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo *</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-krama focus:border-krama outline-none transition-all bg-gray-50 focus:bg-white" placeholder="Ej. Juan Pérez">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-krama focus:border-krama outline-none transition-all bg-gray-50 focus:bg-white" placeholder="ejemplo@correo.com">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Teléfono *</label>
+                                    <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-krama focus:border-krama outline-none transition-all bg-gray-50 focus:bg-white" placeholder="+56 9...">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Servicio de Interés</label>
+                                <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-krama focus:border-krama outline-none transition-all bg-gray-50 focus:bg-white">
+                                    <option value="" disabled selected>Seleccione una opción...</option>
+                                    <option value="energia">Redes Eléctricas y Baterías</option>
+                                    <option value="generadores">Respaldo Generadores (GG.EE)</option>
+                                    <option value="telecom">Trabajos FFOO / MMOO</option>
+                                    <option value="sitios">Mantenimiento Sitios Celulares</option>
+                                    <option value="obras">Obras Civiles Menores</option>
+                                    <option value="otro">Otro Requerimiento</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje *</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-krama focus:border-krama outline-none transition-all bg-gray-50 focus:bg-white resize-none" placeholder="Describa su requerimiento..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-krama hover:bg-krama-dark text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex justify-center items-center gap-2">
+                                <span>Enviar Mensaje</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            
+                            <!-- Mensaje de Éxito Oculto -->
+                            <div id="success-message" class="hidden mt-4 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xl"></i>
+                                <p class="text-sm font-medium">¡Gracias! Su mensaje ha sido simulado (esta es una demo). En una web real, esto enviaría un correo.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+                
+                <!-- Info Empresa -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-6 opacity-90">
+                        <!-- Fallback logo if image fails -->
+                        <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center">
+                            <i class="fa-solid fa-wifi text-krama text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-white text-xl leading-none tracking-wide">KRAMA</span>
+                            <span class="block text-[10px] text-gray-400 tracking-widest font-semibold mt-1">SOLUCIONES INTEGRALES SPA</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
+                        Especialistas en infraestructura de telecomunicaciones y obras civiles en Chillán. Calidad, seguridad y respuesta rápida para cada proyecto.
+                    </p>
+                </div>
+                
+                <!-- Enlaces Rápidos -->
+                <div class="md:col-span-3">
+                    <h4 class="text-white font-bold mb-6 tracking-wider text-sm uppercase">Enlaces Rápidos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-white transition-colors text-sm">Inicio</a></li>
+                        <li><a href="#nosotros" class="text-gray-400 hover:text-white transition-colors text-sm">Sobre Nosotros</a></li>
+                        <li><a href="#servicios" class="text-gray-400 hover:text-white transition-colors text-sm">Nuestros Servicios</a></li>
+                        <li><a href="#contacto" class="text-gray-400 hover:text-white transition-colors text-sm">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contacto Rápido -->
+                <div class="md:col-span-4">
+                    <h4 class="text-white font-bold mb-6 tracking-wider text-sm uppercase">Contacto</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone text-krama mt-1"></i>
+                            <a href="tel:+5693509379" class="text-gray-300 hover:text-white transition-colors">+56 9 3509 379</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-krama mt-1"></i>
+                            <span class="text-gray-400 text-sm">Chillán, Región de Ñuble, Chile</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-regular fa-clock text-krama mt-1"></i>
+                            <span class="text-gray-400 text-sm">Lunes a Viernes: 08:30 - 18:30<br>Atención emergencias 24/7</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm text-center md:text-left">
+                    &copy; 2026 KRAMA CHILE SOLUCIONES INTEGRALES SPA. Todos los derechos reservados.
+                </p>
+                <!-- Redes sociales (Placeholders) -->
+                <div class="flex gap-4">
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-krama hover:text-white transition-all">
+                        <i class="fa-brands fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-krama hover:text-white transition-all">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://wa.me/5693509379" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 z-50">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Lógica del Menú Móvil ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const navbar = document.getElementById('navbar');
+
+            // Toggle del menú al hacer clic en el botón de hamburguesa
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Cambiar el icono
+                const icon = mobileMenuBtn.querySelector('i');
+                if(mobileMenu.classList.contains('hidden')){
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+
+            // Cerrar menú móvil al hacer clic en un enlace
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // --- Efecto de Header al hacer scroll ---
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow-lg', 'bg-white/95');
+                    navbar.classList.remove('bg-transparent');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                    // Opcional: Hacer transparente en top si el fondo lo permite
+                    // navbar.classList.add('bg-transparent'); 
+                    // navbar.classList.remove('bg-white/95');
+                }
+            });
+
+            // --- Animaciones Scroll (Intersection Observer) ---
+            // Hace que los elementos aparezcan suavemente al hacer scroll hacia ellos
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            
+            const appearOptions = {
+                threshold: 0.15, // Porcentaje del elemento visible antes de animar
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Solo anima una vez
+                    }
+                });
+            }, appearOptions);
+
+            fadeElements.forEach(el => {
+                appearOnScroll.observe(el);
+            });
+        });
+
+        // --- Función simulada para el formulario de contacto ---
+        function showSuccessMessage() {
+            const successDiv = document.getElementById('success-message');
+            const form = document.getElementById('contact-form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            // Cambiar estado del botón
+            const originalContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75');
+
+            // Simular petición de red (1.5 segundos)
+            setTimeout(() => {
+                successDiv.classList.remove('hidden');
+                form.reset(); // Limpiar formulario
+                
+                // Restaurar botón
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75');
+                
+                // Ocultar mensaje después de 5 segundos
+                setTimeout(() => {
+                    successDiv.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
